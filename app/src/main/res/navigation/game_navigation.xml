@@ -13,6 +13,9 @@
         <action
             android:id="@+id/actionGameFragment"
             app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/actionResultFragment"
+            app:destination="@id/resultFragment" />
     </fragment>
     <fragment
         android:id="@+id/gameFragment"
@@ -27,5 +30,17 @@
         <argument
             android:name="player_name"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.ubaya.adv160420067week2.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/actionMainFragment2"
+            app:destination="@id/mainFragment" />
+        <argument
+            android:name="nilaiAkhir"
+            app:argType="integer" />
     </fragment>
 </navigation>

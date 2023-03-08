@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import kotlinx.android.synthetic.main.fragment_main.*
+import kotlin.random.Random
 
 
 class MainFragment : Fragment() {
@@ -19,10 +20,29 @@ class MainFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        var nilai=0
+
+        txtPertama.text=(0..20).random().toString()
+        txtKedua.text=(0..20).random().toString()
+
+
         btnStart.setOnClickListener {
-            val playerName = txtName.text.toString()
-            val action = MainFragmentDirections.actionGameFragment(playerName)
-            Navigation.findNavController(it).navigate(action)
+            var hasil= txtPertama.text.toString().toInt()+txtKedua.text.toString().toInt()
+            val jawaban = txtName.text.toString()
+
+            if(hasil.toString()==jawaban.toString()){
+                nilai+=1
+                txtPertama.text=(0..20).random().toString()
+                txtKedua.text=(0..20).random().toString()
+                txtName.text!!.clear()
+            }else{
+                val action = MainFragmentDirections.actionResultFragment(nilai)
+                Navigation.findNavController(it).navigate(action)
+            }
+
+
+
 
         }
     }
