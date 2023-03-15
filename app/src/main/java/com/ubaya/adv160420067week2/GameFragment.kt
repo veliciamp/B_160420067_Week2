@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
+import com.ubaya.adv160420067week2.GameFragmentDirections.Companion.actionMainFragment
 import kotlinx.android.synthetic.main.fragment_game.*
+import kotlinx.android.synthetic.main.fragment_main.*
 
 class GameFragment : Fragment() {
 
@@ -20,16 +22,15 @@ class GameFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(arguments != null) {
-            val playerName =
-                GameFragmentArgs.fromBundle(requireArguments()).playerName
-            txtTurn.text = "$playerName's Turn"
-        }else if(arguments==null){
-            Toast.makeText(this.context, "Hello Javatpoint", Toast.LENGTH_LONG).show()
-        }
-        btnBack.setOnClickListener {
-            val action = GameFragmentDirections.actionMainFragment()
+        btnName.setOnClickListener {
+            val playerName = txtName.text.toString()
+            val action = GameFragmentDirections.actionMainFragment(playerName)
             Navigation.findNavController(it).navigate(action)
         }
+        btnOption.setOnClickListener {
+            val action = GameFragmentDirections.actionOptionFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
+
     }
 }

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.Navigation
-import com.ubaya.adv160420067week2.ResultFragmentDirections.Companion.actionMainFragment2
+
 import kotlinx.android.synthetic.main.fragment_game.*
 import kotlinx.android.synthetic.main.fragment_result.*
 
@@ -28,7 +28,7 @@ class ResultFragment : Fragment() {
             txtScore.text = "Your score is $nilai"
         }
         btnBalik.setOnClickListener {
-            val action = ResultFragmentDirections.actionMainFragment2()
+            val action = ResultFragmentDirections.actionGameFragment()
             Navigation.findNavController(it).navigate(action)
         }
     }
